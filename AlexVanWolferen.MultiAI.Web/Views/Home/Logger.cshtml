@@ -7,6 +7,9 @@
         </div>
         <div class="col-md-8">
             <select name="index">
+                <option value="0" @(Request["ai"] == "0" ? "selected=\"selected\"" : "")>
+                    primary AlexVanWolferen.MultiAI.Web &amp; and clone to AlexVanWolferen.MultiAI.Web-secondary
+                </option>
                 <option value="1" @(Request["ai"] == "1" ? "selected=\"selected\"" : "")>
                     AlexVanWolferen.MultiAI.Web
                 </option>
@@ -15,6 +18,13 @@
                 </option>
             </select>
         </div>
-        <div class="col-md-12"><button name="submit" type="submit">submit</button></div>
-    </div>
+        <div class="row">
+            <div class="col-md-4">
+                Custom text
+            </div>
+            <div class="col-md-8">
+                <input type="text" name="message" />
+            </div>
+            <div class="col-md-12"><button name="submit" type="submit">submit</button></div>
+        </div>
 </form>

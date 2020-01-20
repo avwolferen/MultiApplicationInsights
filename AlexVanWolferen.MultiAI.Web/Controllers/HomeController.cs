@@ -33,14 +33,14 @@ namespace AlexVanWolferen.MultiAI.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Log(int index)
+        public ActionResult Log(int index, string message)
         {
             HttpContext.Items["ai_preferred"] = index;
 
 
-            System.Diagnostics.Trace.TraceInformation("Information: This is a message from the application");
-            System.Diagnostics.Trace.TraceWarning("Warning: This is a message from the application");
-            System.Diagnostics.Trace.TraceError("Error: This is a message from the application");
+            System.Diagnostics.Trace.TraceInformation($"Information {index}: {(string.IsNullOrWhiteSpace(message) ? "This is a message from the application" : message)}");
+            System.Diagnostics.Trace.TraceWarning($"Warning {index}: {(string.IsNullOrWhiteSpace(message) ? "This is a message from the application" : message)}");
+            System.Diagnostics.Trace.TraceError($"Error {index}: {(string.IsNullOrWhiteSpace(message) ? "This is a message from the application" : message)}");
 
             return RedirectToAction("Logger", new { @ai = index });
         }
