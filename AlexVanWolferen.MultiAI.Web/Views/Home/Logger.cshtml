@@ -1,0 +1,20 @@
+﻿<h2>Log to preferred AI instance</h2>
+
+<form name="Log" action="Log" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            Application Insights log to AI
+        </div>
+        <div class="col-md-8">
+            <select name="index">
+                <option value="1" @(Request["ai"] == "1" ? "selected=\"selected\"" : "")>
+                    AlexVanWolferen.MultiAI.Web
+                </option>
+                <option value="2" @(Request["ai"] == "2" ? "selected=\"selected\"" : "")>
+                    AlexVanWolferen.MultiAI.Web-secondary
+                </option>
+            </select>
+        </div>
+        <div class="col-md-12"><button name="submit" type="submit">submit</button></div>
+    </div>
+</form>
