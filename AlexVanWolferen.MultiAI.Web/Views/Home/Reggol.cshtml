@@ -1,0 +1,17 @@
+﻿@model AlexVanWolferen.MultiAI.Web.ViewModels.Rellog
+
+<h2>Log to AI instance from the other side</h2>
+
+<form name="Reg" action="Reg" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            Application Insights log to AI
+        </div>
+        <div class="row">
+            <div class="col-md-12"><button name="submit" type="submit">submit</button></div>
+        </div>
+    </div>
+</form>
+<div>
+    @(Model != null ? Model.Response : string.Empty)
+</div>

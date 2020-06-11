@@ -32,6 +32,11 @@ namespace AlexVanWolferen.MultiAI.Web.Controllers
             return View();
         }
 
+        public ActionResult Reggol()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Log(int index, string message)
         {
@@ -44,5 +49,20 @@ namespace AlexVanWolferen.MultiAI.Web.Controllers
 
             return RedirectToAction("Logger", new { @ai = index });
         }
+
+        [HttpPost]
+        public ActionResult Reg()
+        {
+            string response = string.Empty;
+
+            using (var client = new System.Net.WebClient())
+            {
+                client.Headers.Add("ai-callback", System.Configuration.ConfigurationManager.AppSettings["ai_primary"]);
+                response = client.DownloadString("http://localhost:55809/WeatherForecast");
+            }
+
+            return View("Reggol", new ViewModels.Rellog { Response = response });
+        }
+
     }
 }

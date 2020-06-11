@@ -8,9 +8,9 @@ using System.Web;
 
 namespace AlexVanWolferen.MultiAI.Web.TelemetryInitializer
 {
-    public class MultiInstrumentationTelemetryInitializer : Microsoft.ApplicationInsights.Extensibility.ITelemetryInitializer
+    public class MultiInstrumentationTelemetryInitializer : ITelemetryInitializer
     {
-        private TelemetryClient telemetryClient = new TelemetryClient();
+        private TelemetryClient _telemetryClient = new TelemetryClient();
 
         public void Initialize(ITelemetry telemetry)
         {
@@ -29,7 +29,7 @@ namespace AlexVanWolferen.MultiAI.Web.TelemetryInitializer
                     {
                         var telemetryClone = telemetry.DeepClone();
                         telemetryClone.Context.InstrumentationKey = System.Configuration.ConfigurationManager.AppSettings["ai_secondary"];
-                        telemetryClient.Track(telemetryClone);
+                        _telemetryClient.Track(telemetryClone);
                     }
                 }
             }
